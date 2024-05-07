@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb8kxvywhl0ml"]
+
+[sub_resource type="Curve" id="Curve_74km3"]
+min_value = 0.2
+max_value = 5.0
+_data = [Vector2(0.0680628, 0.606185), 0.0, 0.0, 0, 0, Vector2(0.424084, 0.801755), 0.0, 0.0, 0, 0, Vector2(0.772251, 1.36239), 0.0, 0.0, 0, 0, Vector2(1, 0.788717), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="CardArc" type="Line2D"]
+width = 4.0
+width_curve = SubResource("Curve_74km3")

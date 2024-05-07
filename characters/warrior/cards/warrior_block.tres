@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://d224yyup7tuhg"]
+
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_u7s6p"]
+
+[resource]
+script = ExtResource("1_u7s6p")
+id = "warrior_block"
+type = 1
+target = 0
