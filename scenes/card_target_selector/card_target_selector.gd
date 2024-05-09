@@ -23,16 +23,13 @@ func _get_points() -> Array:
 	var start := current_card.global_position
 	start.x += (current_card.size.x / 2)
 	var target := get_local_mouse_position()
-	print(get_local_mouse_position())
 	var distance := (target - start)
 	for i in range(ARC_POINTS):
 		var t := (1.0 / ARC_POINTS) * i
 		var x := start.x + (distance.x / ARC_POINTS) * i
 		var y := start.y + ease_out_cubic(t) * distance.y
 		points.append(Vector2(x, y))
-		print(i," ", x," ", y)	
 	points.append(target)
-	print(target)
 	return points
 	
 func ease_out_cubic(number : float) -> float:
