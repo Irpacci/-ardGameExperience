@@ -27,3 +27,6 @@ shape = SubResource("CircleShape2D_qvcsg")
 [node name="StatsUI" parent="." instance=ExtResource("3_2d05a")]
 offset_top = 6.0
 offset_bottom = 22.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

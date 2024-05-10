@@ -1,7 +1,7 @@
 class_name Enemy
 extends Area2D
 
-const ARROW_OFFSET := 5
+const ARROW_OFFSET := 10
 
 @export var stats: Stats : set = set_enemy_stats
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -32,3 +32,11 @@ func take_damage(damage: int) -> void:
 	stats.take_damage(damage)
 	if stats.health <= 0:
 		queue_free()
+
+
+func _on_area_entered(_area):
+	arrow.show()
+
+
+func _on_area_exited(_area):
+	arrow.hide()
