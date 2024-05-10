@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://50464k7fkmmf"]
+[gd_scene load_steps=13 format=3 uid="uid://50464k7fkmmf"]
 
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_tdud0"]
 [ext_resource type="Script" path="res://scenes/ui/hand.gd" id="2_edocy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://p3jhcciuop0c" path="res://characters/warrior/cards/warrior_axe_attack.tres" id="4_0ydy1"]
 [ext_resource type="Resource" uid="uid://exl4rwoeaxx" path="res://characters/warrior/warrior.tres" id="4_vndqh"]
 [ext_resource type="Resource" uid="uid://d224yyup7tuhg" path="res://characters/warrior/cards/warrior_block.tres" id="5_bbqjg"]
+[ext_resource type="PackedScene" uid="uid://cankhs6ugr5s6" path="res://scenes/ui/mana_ui.tscn" id="11_oipko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yl8x7"]
 size = Vector2(256, 100)
@@ -61,28 +62,36 @@ script = ExtResource("2_edocy")
 [node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
 layout_mode = 2
 card = ExtResource("4_0ydy1")
-
-[node name="CardUI4" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
-layout_mode = 2
-card = ExtResource("4_0ydy1")
-
-[node name="CardUI5" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
-layout_mode = 2
-card = ExtResource("4_0ydy1")
-
-[node name="CardUI6" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
-layout_mode = 2
-card = ExtResource("4_0ydy1")
-
-[node name="CardUI7" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
-layout_mode = 2
-card = ExtResource("5_bbqjg")
+char_stats = ExtResource("4_vndqh")
 
 [node name="CardUI2" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
 layout_mode = 2
 card = ExtResource("5_bbqjg")
+char_stats = ExtResource("4_vndqh")
 
 [node name="CardUI3" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
 layout_mode = 2
-size_flags_vertical = 8
+card = ExtResource("4_0ydy1")
+char_stats = ExtResource("4_vndqh")
+
+[node name="CardUI4" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
+layout_mode = 2
+card = ExtResource("4_0ydy1")
+char_stats = ExtResource("4_vndqh")
+
+[node name="CardUI5" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
+layout_mode = 2
 card = ExtResource("5_bbqjg")
+char_stats = ExtResource("4_vndqh")
+
+[node name="CardUI6" parent="BattleUI/Hand" instance=ExtResource("2_wqx4y")]
+layout_mode = 2
+card = ExtResource("5_bbqjg")
+char_stats = ExtResource("4_vndqh")
+
+[node name="ManaUI" parent="BattleUI" instance=ExtResource("11_oipko")]
+offset_left = 11.0
+offset_top = -27.0
+offset_right = 29.0
+offset_bottom = -9.0
+char_stats = ExtResource("4_vndqh")

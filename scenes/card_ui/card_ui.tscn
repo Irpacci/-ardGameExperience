@@ -1,16 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://d01e3xguddgl"]
+[gd_scene load_steps=12 format=3 uid="uid://d01e3xguddgl"]
 
 [ext_resource type="Theme" uid="uid://c0wokhxe0cyk2" path="res://main_theme.tres" id="1_ag2fo"]
 [ext_resource type="Script" path="res://scenes/card_ui/card_ui.gd" id="2_crn2b"]
 [ext_resource type="Script" path="res://scenes/card_ui/card_state_machine.gd" id="3_i4cuo"]
+[ext_resource type="StyleBox" uid="uid://bnfqf0ksy1mch" path="res://scenes/card_ui/card_base_stylebox.tres" id="3_jgrq6"]
 [ext_resource type="Script" path="res://scenes/card_ui/card_states/card_base_state.gd" id="4_4jwph"]
+[ext_resource type="Texture2D" uid="uid://c6rme2o6dyaoj" path="res://art/tile_0104.png" id="4_f8eqy"]
 [ext_resource type="Script" path="res://scenes/card_ui/card_states/card_clicked_state.gd" id="5_33sjo"]
 [ext_resource type="Script" path="res://scenes/card_ui/card_states/card_dragging_state.gd" id="6_qt2dq"]
 [ext_resource type="Script" path="res://scenes/card_ui/card_states/card_released_state.gd" id="7_tewuk"]
 [ext_resource type="Script" path="res://scenes/card_ui/card_states/card_aiming_state.gd" id="8_632vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hn771"]
-size = Vector2(46.919, 71.4169)
+size = Vector2(39.4322, 60)
 
 [node name="CardUI" type="Control"]
 custom_minimum_size = Vector2(25, 30)
@@ -25,35 +27,50 @@ grow_vertical = 2
 theme = ExtResource("1_ag2fo")
 script = ExtResource("2_crn2b")
 
-[node name="Color" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0.532195, 0.17414, 1)
-
-[node name="State" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "State"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="DropPointDetector" type="Area2D" parent="."]
 collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
 position = Vector2(12.5, 15)
-scale = Vector2(0.532833, -0.420068)
+rotation = -3.14159
+scale = Vector2(0.634, -0.5)
 shape = SubResource("RectangleShape2D_hn771")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("3_jgrq6")
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 10.0
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_f8eqy")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_i4cuo")

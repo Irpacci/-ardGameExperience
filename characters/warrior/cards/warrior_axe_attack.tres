@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://p3jhcciuop0c"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://p3jhcciuop0c"]
 
-[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_pk4jx"]
+[ext_resource type="Texture2D" uid="uid://c6rme2o6dyaoj" path="res://art/tile_0104.png" id="1_orw2k"]
+[ext_resource type="Script" path="res://characters/warrior/cards/warrior_axe_attack.gd" id="2_8u72k"]
 
 [resource]
-script = ExtResource("1_pk4jx")
+script = ExtResource("2_8u72k")
 id = "warrior_axe_attack"
 type = 0
 target = 1
+cost = 1
+icon = ExtResource("1_orw2k")
+tooltip_text = ""
