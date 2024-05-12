@@ -5,6 +5,9 @@ extends Panel
 @onready var mana_label: Label = $ManaLabel
 	
 
+func _ready() -> void:
+	char_stats.reset_mana()  #delete
+	
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
 	if not char_stats.stats_changed.is_connected(_on_stats_changed):

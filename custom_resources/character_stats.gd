@@ -10,6 +10,7 @@ var deck: CardPile
 var discard: CardPile
 var draw_pile: CardPile
 
+
 func set_mana(value: int) -> void:
 	mana = value
 	stats_changed.emit()
