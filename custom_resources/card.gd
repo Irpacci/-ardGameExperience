@@ -2,21 +2,22 @@ class_name Card
 extends Resource
 
 enum Type {ATTACK, SKILL, POWER}
-enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
+enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE, ENEMY_AND_SELF}
 
 @export_group("Card Attributes")
 @export var id: String
 @export var type: Type
 @export var target: Target
 @export var cost: int
+@export var sound: AudioStream
 
 @export_group("Card Visuals")
 @export var icon: Texture
 @export_multiline var tooltip_text: String
 
 func is_single_targeted() -> bool:
-	return target == Target.SINGLE_ENEMY
-
+	return target == Target.SINGLE_ENEMY or target == Target.ENEMY_AND_SELF
+	
 func _get_targets(targets: Array[Node]) -> Array[Node]:
 	if not targets:
 		return []
@@ -28,16 +29,17 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
 			return tree.get_nodes_in_group("enemies")
 		Target.EVERYONE:
 			return tree.get_nodes_in_group("player") + tree.get_nodes_in_group("enemies")
+		Target.SINGLE_ENEMY:
+			return targets
+		Target.ENEMY_AND_SELF:
+			return targets + tree.get_nodes_in_group("player")
 		_:
 			return []
 			
 func play(targets: Array[Node], char_stats: CharacterStats) -> void:
 	Events.card_played.emit(self)
 	char_stats.mana -= cost
-	if is_single_targeted():
-		apply_effects(targets)
-	else:
-		apply_effects(_get_targets(targets))
+	apply_effects(_get_targets(targets))
 		
 func apply_effects(_targets: Array[Node]) -> void:
 	pass

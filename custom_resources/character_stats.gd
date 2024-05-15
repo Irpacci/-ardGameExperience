@@ -10,6 +10,11 @@ var deck: CardPile
 var discard: CardPile
 var draw_pile: CardPile
 
+func take_damage(damage: int) -> void:
+	var initial_health := health
+	super.take_damage(damage)
+	if initial_health > health:
+		Events.player_hit.emit()
 
 func set_mana(value: int) -> void:
 	mana = value
@@ -30,3 +35,4 @@ func create_instance() -> Resource:
 	instance.draw_pile = CardPile.new()
 	instance.discard = CardPile.new()
 	return instance
+

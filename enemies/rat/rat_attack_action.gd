@@ -1,6 +1,6 @@
 extends EnemyAction
 
-@export var damage := 7
+@export var damage := 8
 
 func perform_action() -> void:
 	if not enemy or not target:
@@ -11,10 +11,11 @@ func perform_action() -> void:
 	var damage_effect := DamageEffect.new()
 	var target_array: Array[Node] = [target]
 	damage_effect.amount = damage
-	tween.tween_property(enemy, "global_position", end, 0.4)
+	damage_effect.sound = sound
+	tween.tween_property(enemy, "global_position", end, 0.15)
 	tween.tween_callback(damage_effect.execute.bind(target_array))
-	tween.tween_interval(0.25)
-	tween.tween_property(enemy, "global_position", start, 0.4)
+	tween.tween_interval(0.1)
+	tween.tween_property(enemy, "global_position", start, 0.22)
 	tween.finished.connect(
 		func():
 		Events.enemy_action_completed.emit(enemy)
